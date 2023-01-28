@@ -9,7 +9,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserTokenDetails extends AbstractPersistenceEntity {
+public class UserTokenDetails {
 
     private String id;
     private String username;

@@ -3,6 +3,7 @@ package com.system.backend.core.service.impl;
 import com.system.backend.core.entity.User;
 import com.system.backend.core.exception.UserExceptionHandler;
 import com.system.backend.core.repository.UserRepository;
+import com.system.backend.core.security.service.EncoderService;
 import com.system.backend.core.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private EncoderService encoderService;
     @Override
     public void createUser(User user) {
         user.setActive(true);
         user.setInsertionDate(LocalDate.now());
-
+        user.setPassword(encoderService.encoder(user.getPassword()));
         try{
             userRepository.save(user);
         }catch (Exception e){
