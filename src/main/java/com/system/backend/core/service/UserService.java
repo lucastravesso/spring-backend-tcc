@@ -9,6 +9,7 @@ import java.util.UUID;
 public interface UserService {
 
     void createUser(User user);
+    @Description("Only to add so many users in one request")
     void createUsers(List<User> userList);
     void updateUser(User user);
     @Description("Only inactivate the user passed by Id")

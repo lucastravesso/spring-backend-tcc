@@ -34,7 +34,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createUsers(List<User> userList) {
+        userList.forEach(u -> {
+            u.setActive(true);
+            u.setInsertionDate(LocalDate.now());
+        });
 
+        try{
+            userRepository.saveAll(userList);
+        }catch (Exception e){
+            log.error("Fail to save some user in database, check the exception to catch it.", e);
+            throw UserExceptionHandler.UserException002_FailToCreateUser();
+        }
     }
 
     @Override
