@@ -43,7 +43,7 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
         UUID idUser = tokenService.getIdUser(token);
         Optional<User> user = userRepository.findById(idUser);
         if(user.isEmpty()) throw UserExceptionHandler.UserException001_UserNotFound();
-        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user.get(), null, user.getAuthorities());
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user.get(), null, user.get().getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
