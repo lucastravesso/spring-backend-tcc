@@ -14,8 +14,8 @@ import lombok.Setter;
 @Table(name = "User")
 public class User extends AbstractPersistenceEntity {
 
-    @Column(name = "Login")
-    private String login;
+    @Column(name = "UserName")
+    private String userName;
 
     @Column(name = "Email")
     private String mail;
