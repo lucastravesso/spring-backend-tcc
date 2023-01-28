@@ -1,5 +1,6 @@
-package com.system.backend.core.entity;
+package com.system.backend.core.security.inf;
 
+import com.system.backend.core.entity.Profiles;
 import lombok.*;
 
 import java.util.Set;

@@ -1,6 +1,7 @@
 package com.system.backend;
 
 import com.system.backend.core.configuration.CoreConfiguration;
+import com.system.backend.core.security.configuration.SecurityConfiguration;
 import com.system.backend.inbound.configuration.InboundConfiguration;
 import com.system.backend.outbound.configuration.OutboundConfiguration;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +14,8 @@ public class BackendApplication {
 		SpringApplication.run(new Class[]{BackendApplication.class,
 				CoreConfiguration.class,
 				InboundConfiguration.class,
-				OutboundConfiguration.class}, args);
+				OutboundConfiguration.class,
+				SecurityConfiguration.class}, args);
 	}
 
 }

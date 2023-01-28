@@ -1,7 +1,7 @@
 package com.system.backend.core.security.service;
 
 import com.system.backend.core.entity.User;
-import com.system.backend.core.entity.UserTokenDetails;
+import com.system.backend.core.security.inf.UserTokenDetails;
 import com.system.backend.core.exception.UserExceptionHandler;
 import com.system.backend.core.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
