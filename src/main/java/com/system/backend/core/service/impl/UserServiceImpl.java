@@ -78,7 +78,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(UUID idUser) {
-        return null;
+        try {
+            return userRepository.findByIdAndActive(idUser);
+        }catch (Exception e){
+            throw UserExceptionHandler.UserException001_UserNotFound();
+        }
     }
 
     @Override

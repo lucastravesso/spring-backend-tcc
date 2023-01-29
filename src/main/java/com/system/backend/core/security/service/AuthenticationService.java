@@ -24,10 +24,10 @@ public class AuthenticationService implements UserDetailsService {
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         try{
             UserDetails ud;
-            if (userRepository.findByUserName(login) != null){
-                ud = userRepository.findByUserName(login);
+            if (userRepository.findByUserNameAndActive(login) != null){
+                ud = userRepository.findByUserNameAndActive(login);
             }else{
-                ud = userRepository.findByMail(login);
+                ud = userRepository.findByMailAndActive(login);
             }
             return ud;
         }catch (Exception e){
@@ -40,12 +40,12 @@ public class AuthenticationService implements UserDetailsService {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User ud;
         try{
-            ud = userRepository.findByUserName(userDetails.getUsername());
+            ud = userRepository.findByUserNameAndActive(userDetails.getUsername());
         }catch (Exception e){
             throw SecurityExceptionHandler.SecurityException001_UserNotFound();
         }
         if (ud == null){
-            ud = userRepository.findByMail(userDetails.getUsername());
+            ud = userRepository.findByMailAndActive(userDetails.getUsername());
         }
         return UserTokenDetails.builder()
                 .id(ud.getId().toString())

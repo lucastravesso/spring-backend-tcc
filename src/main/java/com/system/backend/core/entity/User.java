@@ -1,9 +1,8 @@
 package com.system.backend.core.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+import net.bytebuddy.implementation.bind.annotation.Super;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@SuperBuilder
 @Table(name = "User")
 public class User extends AbstractPersistenceEntity implements UserDetails {
 
