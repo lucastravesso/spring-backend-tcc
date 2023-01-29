@@ -1,6 +1,7 @@
 package com.system.backend.core.security.service;
 
 import com.system.backend.core.entity.User;
+import com.system.backend.core.exception.SecurityExceptionHandler;
 import com.system.backend.core.security.inf.UserTokenDetails;
 import com.system.backend.core.exception.UserExceptionHandler;
 import com.system.backend.core.repository.UserRepository;
@@ -36,16 +37,19 @@ public class AuthenticationService implements UserDetailsService {
     }
 
     public UserTokenDetails getCurrent() {
-        // TODO resolver problema do /me ao retornar dados do usuario
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User ud;
-        if (userRepository.findByUserName(userDetails.getUsername()) != null){
+        try{
             ud = userRepository.findByUserName(userDetails.getUsername());
-        }else{
+        }catch (Exception e){
+            throw SecurityExceptionHandler.SecurityException001_UserNotFound();
+        }
+        if (ud == null){
             ud = userRepository.findByMail(userDetails.getUsername());
         }
         return UserTokenDetails.builder()
                 .id(ud.getId().toString())
+                .userName(ud.getUsername())
                 .email(ud.getMail())
                 .profiles(ud.getProfiles())
                 .build();

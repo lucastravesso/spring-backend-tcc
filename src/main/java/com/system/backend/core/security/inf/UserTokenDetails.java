@@ -13,7 +13,7 @@ import java.util.Set;
 public class UserTokenDetails {
 
     private String id;
-    private String username;
+    private String userName;
     private String email;
     private Set<Profiles> profiles;
 }
