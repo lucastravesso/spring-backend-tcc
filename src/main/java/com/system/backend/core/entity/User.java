@@ -1,15 +1,14 @@
 package com.system.backend.core.entity;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -67,6 +66,7 @@ public class User extends AbstractPersistenceEntity implements UserDetails {
     public UsernamePasswordAuthenticationToken converterUsername() {
         return new UsernamePasswordAuthenticationToken(userName, password);
     }
+
     public UsernamePasswordAuthenticationToken converterEmail() {
         return new UsernamePasswordAuthenticationToken(mail, password);
     }

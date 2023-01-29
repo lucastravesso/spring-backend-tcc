@@ -24,11 +24,13 @@ public class UserFacadeImpl implements UserFacade {
 
     @Override
     public void createUser(UserDTO user) {
+        User userConverted;
         try {
-            userService.createUser(userMapper.toEntity(user));
+            userConverted = userMapper.toEntity(user);
         } catch (Exception e) {
             throw UserExceptionHandler.UserException003_FailToConvertUser();
         }
+        userService.createUser(userConverted);
     }
 
     @Override
@@ -43,11 +45,13 @@ public class UserFacadeImpl implements UserFacade {
 
     @Override
     public void updateUser(UserDTO user) {
+        User userConverted;
         try {
-            userService.updateUser(userMapper.toEntity(user));
+            userConverted = userMapper.toEntity(user);
         } catch (Exception e) {
             throw UserExceptionHandler.UserException003_FailToConvertUser();
         }
+        userService.updateUser(userConverted);
     }
 
     @Override
