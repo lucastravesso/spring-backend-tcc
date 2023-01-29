@@ -36,6 +36,7 @@ public class AuthenticationService implements UserDetailsService {
     }
 
     public UserTokenDetails getCurrent() {
+        // TODO resolver problema do /me ao retornar dados do usuario
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User ud;
         if (userRepository.findByUserName(userDetails.getUsername()) != null){

@@ -39,7 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/v01/tcc-spring-api/authentication/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/v01/tcc-spring-api/authentication").permitAll()
                 .antMatchers(HttpMethod.POST, "/v01/tcc-spring-api/user/create").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
