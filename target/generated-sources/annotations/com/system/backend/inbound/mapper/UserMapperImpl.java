@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-29T13:53:22-0300",
+    date = "2023-01-31T19:29:57-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 18.0.1.1 (Oracle Corporation)"
 )
 @Component
@@ -27,7 +27,6 @@ public class UserMapperImpl implements UserMapper {
         user.setId( userDTO.getId() );
         user.setUserName( userDTO.getUserName() );
         user.setMail( userDTO.getMail() );
-        user.setPassword( userDTO.getPassword() );
         Set<Profiles> set = userDTO.getProfiles();
         if ( set != null ) {
             user.setProfiles( new HashSet<Profiles>( set ) );
